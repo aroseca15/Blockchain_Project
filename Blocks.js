@@ -13,6 +13,10 @@ this.data = data;
         Current Hash: ${this.currHash.substring(0, 10)}
         Data: ${this.data}`;
     };
+
+    static genesis() {
+        return new this('Genesis Time', '-----', 'f1r57-h45h', [])
+    }
 };
 
 module.exports = Blocks;
