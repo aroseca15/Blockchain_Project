@@ -1,0 +1,23 @@
+{
+  "name": "blockchain_project",
+  "version": "1.0.0",
+  "description": "This is a practice in creating blockchain apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run",
+    "dev-test": "nodemon dev-test "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aroseca15/Blockchain_Project.git"
+  },
+  "author": "Amanda MacDonald aroseca15",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aroseca15/Blockchain_Project/issues"
+  },
+  "homepage": "https://github.com/aroseca15/Blockchain_Project#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
