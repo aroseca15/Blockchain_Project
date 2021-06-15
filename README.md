@@ -27,9 +27,11 @@ Under construction, not needed at this time.
 Wrote own tests for each block.
 
 ## Professional Profiles and Email:
-arosea15
-https://www.linkedin.com/in/amanda-macdonald-/
-aroseca15@gmail.com
+GitHub: arosea15
+
+Linkedin:  https://www.linkedin.com/in/amanda-macdonald-/
+
+Email: aroseca15@gmail.com
 
 ## Contact for Questions:
 For answers to any further questions please contact me via: Email or Linkedin
