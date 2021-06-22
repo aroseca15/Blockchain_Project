@@ -28,7 +28,6 @@ class Blocks {
     static currHash(timeStamp, prevHash, data) {
         return SHA256(`${timeStamp}${prevHash}${data}`).toString();
     }
-
 };
 
 module.exports = Blocks;
