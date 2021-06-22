@@ -4,7 +4,7 @@
   "description": "This is a practice in creating blockchain apps",
   "main": "index.js",
   "scripts": {
-    "test": "npm run",
+    "test": "jest --watchAll",
     "dev-test": "nodemon devTest "
   },
   "repository": {
