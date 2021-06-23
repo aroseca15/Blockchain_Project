@@ -15,7 +15,8 @@ This project was for educational and practical purposes. Mainly, to create a Blo
 * [Contact for Questions](#Contact-for-Questions)
     
 ## Installation:
-Under Construction, not needed at this time.
+Fork on to local device
+npm install
 
 ## Usage:
 
@@ -23,8 +24,10 @@ Under construction, not needed at this time.
 ## License:
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-## Tested With:
+## Tested With:   Jest
 Wrote own tests for each block.
+
+npm run test
 
 ## Professional Profiles and Email:
 GitHub: arosea15
