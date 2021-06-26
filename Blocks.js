@@ -28,6 +28,12 @@ class Blocks {
     static currHash(timeStamp, prevHash, data) {
         return SHA256(`${timeStamp}${prevHash}${data}`).toString();
     }
+
+    // blockHash: This will generate a hash by using the input of the block.
+    static blockHash(block) {
+        const { timeStamp, prevHash, data } = block;
+        return block.currHash(timeStamp, prevHash, data);
+    }
 };
 
 module.exports = Blocks;
