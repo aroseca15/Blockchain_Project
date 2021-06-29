@@ -32,6 +32,14 @@ describe('Blockchain', () => {
         expect(BC.isValidChain(BC2.chain)).toBe(false);
     });
 
+    it('invalidates a corrupt chain', () => {
+        BC2.addBlock('Hello');
+        BC2.chain[1].data = 'Bye Bye';
+
+        expect(BC.isValidChain(BC2.chain)).toBe(false);
+    });
+
+
     // it('invalidates a chain with a corrupt chain', () => {
     //     BC2.addBlock('Valid');
     //     BC2.chain[1].data = 'Corrupted';
