@@ -36,7 +36,7 @@ class Blocks {
     // blockHash: This function is for the chain itself, it will generate a hash by using the input of the block. 
     static blockHash(block) {
         const { timeStamp, prevHash, data } = block;
-        return block.currHash(timeStamp, prevHash, data);
+        return Block.currHash(timeStamp, prevHash, data);
     }
 };
 
