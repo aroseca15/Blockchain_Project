@@ -25,7 +25,7 @@ describe('Blockchain', () => {
         expect(BC.isValidChain(BC2.chain)).toBe(true);
     });
 
-    it('invalidates a chain with a corrupt genesis block', () =>{
+    it('invalidates a chain with a corrupt genesis block', () => {
         BC2.chain[0].data = 'Corrupt Gen Block';
 
         expect(BC.isValidChain(BC2.chain)).toBe(false);
@@ -37,6 +37,20 @@ describe('Blockchain', () => {
         BC2.chain[0].data = 'I Need One';
 
         expect(BC.isValidChain(BC2.chain)).toBe(false);
-    })
+    });
+
+    it('Replaces the chain with a valid chain', () => {
+        BC2.addBlock('Jah');
+        BC.replaceChain(BC2.chain);
+
+        expect(BC.chain).toEqual(BC2.chain);
+    });
+
+    it('Rejects/ does NOT replace the chain if the new chain is less than or equal in length', () => {
+        BC.addBlock('dart');
+        BC.replaceChain(BC2.chain);
+
+        expect(BC.chain).not.toEqual(BC2.chain);
+    });
 
 });

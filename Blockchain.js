@@ -28,7 +28,21 @@ class Blockchain {
         }
         return true;
     }
-    
+
+    // replaceChain function: AS new blocks with data are created they will pass through this function to replace the current chain with the longest valid chain. This prevents forks from data being entered at the same time.
+    replaceChain(newChain) {
+        if (newChain.length <= this.chain.length) {
+            console.log('Received chain not longer than current chain.');
+            return;
+        } else if (!this.isValidChain(newChain)) {
+            console.log('Received chain is NOT valid.');
+            return;
+        }
+
+        console.log('Chain Successfully Replaced');
+        this.chain = newChain;
+    }
+
 }
 
 module.exports = Blockchain;
