@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll",
-    "dev-test": "nodemon devTest "
+    "dev-test": "nodemon devTest ",
+    "start": "node./app",
+    "dev": "nodemon ./app"
   },
   "repository": {
     "type": "git",
