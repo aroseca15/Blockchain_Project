@@ -9,29 +9,29 @@ class P2pServer {
     constructor(blockchain) {
         this.blockchain = blockchain;
         this.sockets = [];
-
-        listen() {
-            const server = new WebSocket.Server({ port: P2P_PORT });
-            server.on('connection', socket => this.connectSocket(socket));
-
-            this.connectToPeers();
-
-            console.log(`Listening for peer-to-peer connections on: ${P2P_PORT}`);
-        };
-
-        connectToPeers() {
-            peers.forEach(peer => {
-                // ws://localhost:5001
-                const socket = new WebSocket(peer);
-                socket.on('open', () => this.connectSocket(socket));
-            })
-        };
-
-        connectSocket(socket) {
-            this.sockets.push(socket);
-            console.log('Socket Successfully Connected!');
-        };
     };
+    listen() {
+        const server = new WebSocket.Server({ port: P2P_PORT });
+        server.on('connection', socket => this.connectSocket(socket));
+
+        this.connectToPeers();
+
+        console.log(`Listening for peer-to-peer connections on: ${P2P_PORT}`);
+    };
+
+    connectToPeers() {
+        peers.forEach(peer => {
+            // ws://localhost:5001
+            const socket = new WebSocket(peer);
+            socket.on('open', () => this.connectSocket(socket));
+        })
+    };
+
+    connectSocket(socket) {
+        this.sockets.push(socket);
+        console.log('Socket Successfully Connected!');
+    };
+
 };
 
 module.exports = P2pServer;
