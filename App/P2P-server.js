@@ -3,7 +3,8 @@ const WebSocket = require('ws');
 const P2P_PORT = process.env.P2P_PORT || 5001;
 const peers = process.env.PEERS ? process.env.PEERS.split(',') : [];
 // lessons: 24-26
-// $   HTTP_PORT=3002 P2P_PORT=5003 PEERS='ws://localhost:5001,ws://localhost:5002'  npm run dev
+// $   HTTP_PORT=3002 P2P_PORT=5002 PEERS=ws://localhost:5001  npm run dev  
+//  $   HTTP_PORT=3003 P2P_PORT=5003 PEERS=ws://localhost:5001,ws://localhost:5002  npm run dev
 
 class P2pServer {
     constructor(blockchain) {
@@ -32,14 +33,22 @@ class P2pServer {
         console.log('Socket Successfully Connected!');
 
         this.messageHandler(socket);
-        socket.send(JSON.stringify(this.blockchain.chain));
+        this.sendChain(socket);
     };
 
     messageHandler(socket) {
         socket.on('message', message => {
             const data = JSON.parse(message);
-            console.log('data', data);
+
+            this.blockchain.replaceChain(data);
         })
+    }
+    sendChain(socket) {
+        socket.send(JSON.stringify(this.blockchain.chain));
+    }
+
+    syncChains() {
+        this.sockets.forEach(socket => this.sendChain(socket));
     }
 
 };
