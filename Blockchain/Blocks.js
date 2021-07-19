@@ -24,16 +24,22 @@ class Blocks {
     static genesis() {
         return new this('Genesis Time', '-----', 'f1r57-h45h', [])
     };
-// MineBlock: Aides in block validation.
+    // MineBlock: Aides in block validation.
     static mineBlock(prevBlock, data) {
-        const timeStamp = Date.now();
         const prevHash = prevBlock.currHash;
-        const currHash = Blocks.currHash(timeStamp, prevHash, data);
         let nonce = 0;
+        let currHash, timeStamp;
+        do {
+            nonce++;
+            timeStamp = Date.now();
+            currHash = Blocks.currHash(timeStamp, prevHash, data);
+
+        } while (currHash.substring(0, DIFFICULTY) !== '0'.repeat(DIFFICULTY));
+        
         return new this(timeStamp, prevHash, currHash, data, nonce);
     }
 
-// currHash: This generates a current has for each new block created. 
+    // currHash: This generates a current has for each new block created. 
     static currHash(timeStamp, prevHash, data, nonce) {
         return SHA256(`${timeStamp}${prevHash}${data}${nonce}`).toString();
     }
