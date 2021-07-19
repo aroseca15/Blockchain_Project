@@ -1,11 +1,14 @@
 const SHA256 = require('crypto-js/sha256');
+
+const DIFFICULTY = 4;
 class Blocks {
-    // Constuctor & toString: Creates the actual and console version of every block.
-    constructor(timeStamp, prevHash, currHash, data) {
+    // Constructor & toString: Creates the actual and console version of every block.
+    constructor(timeStamp, prevHash, currHash, data, nonce) {
         this.timeStamp = timeStamp;
         this.prevHash = prevHash;
         this.currHash = currHash;
         this.data = data;
+        this.nonce = nonce;
     }
     toString() {
 
@@ -13,6 +16,7 @@ class Blocks {
         Timestamp: ${this.timeStamp}
         Previous Hash: ${this.prevHash.substring(0, 10)}
         Current Hash: ${this.currHash.substring(0, 10)}
+        Nonce: ${this.nonce}
         Data: ${this.data}`;
     };
 
@@ -25,18 +29,19 @@ class Blocks {
         const timeStamp = Date.now();
         const prevHash = prevBlock.currHash;
         const currHash = Blocks.currHash(timeStamp, prevHash, data);
-        return new this(timeStamp, prevHash, currHash, data);
+        let nonce = 0;
+        return new this(timeStamp, prevHash, currHash, data, nonce);
     }
 
 // currHash: This generates a current has for each new block created. 
-    static currHash(timeStamp, prevHash, data) {
-        return SHA256(`${timeStamp}${prevHash}${data}`).toString();
+    static currHash(timeStamp, prevHash, data, nonce) {
+        return SHA256(`${timeStamp}${prevHash}${data}${nonce}`).toString();
     }
 
     // blockHash: This function is for the chain itself, it will generate a hash by using the input of the block. 
     static blockHash(block) {
-        const { timeStamp, prevHash, data } = block;
-        return Block.currHash(timeStamp, prevHash, data);
+        const { timeStamp, prevHash, data, nonce } = block;
+        return Block.currHash(timeStamp, prevHash, data, nonce);
     }
 };
 
