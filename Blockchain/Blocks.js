@@ -1,6 +1,5 @@
 const SHA256 = require('crypto-js/sha256');
-
-const DIFFICULTY = 4;
+const { DIFFICULTY } = require('../config');
 class Blocks {
     // Constructor & toString: Creates the actual and console version of every block.
     constructor(timeStamp, prevHash, currHash, data, nonce) {
@@ -35,7 +34,7 @@ class Blocks {
             currHash = Blocks.currHash(timeStamp, prevHash, data);
 
         } while (currHash.substring(0, DIFFICULTY) !== '0'.repeat(DIFFICULTY));
-        
+
         return new this(timeStamp, prevHash, currHash, data, nonce);
     }
 
