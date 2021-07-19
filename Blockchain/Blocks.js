@@ -35,7 +35,7 @@ class Blocks {
         do {
             nonce++;
             timeStamp = Date.now();
-            difficulty = Block.adjustDifficulty(prevBlock, timeStamp)
+            difficulty = Blocks.adjustDifficulty(prevBlock, timeStamp)
             currHash = Blocks.currHash(timeStamp, prevHash, data, difficulty);
 
         } while (currHash.substring(0, difficulty) !== '0'.repeat(difficulty));

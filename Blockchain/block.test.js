@@ -18,8 +18,18 @@ describe('Block', () => {
     });
 
     it('generates a current hash that matches the set difficulty', () => {
-        expect(block.currHash.substring(0, DIFFICULTY)).toEqual('0'.repeat(DIFFICULTY));
+        expect(block.currHash.substring(0, block.difficulty)).toEqual('0'.repeat(block.difficulty));
         console.log(block.toString());
     });
+
+    it('lowers the difficulty for slowly mined blocks', () => {
+        expect(Block.adjustDifficulty(block, block.timeStamp+360000)).toEqual(block.difficulty-1);
+        // console.log(block.toString());
+    });
+
+    // it('lowers the difficulty for slowly mined blocks', () => {
+    //     expect(block.adjustDifficulty(block, block.timeStamp+360000)).toEqual(block.difficulty+1);
+    //     // console.log(block.toString());
+    // });
 
 });
