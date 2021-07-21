@@ -1,13 +1,18 @@
-const Blockchain = require('./Blockchain/BlockchainIndex')
-
-let BC = new Blockchain();
-
-for (let i=0; i<10; i++) {
-    console.log(BC.addBlock(`nub ${i}`).toString());
-}
+const Wallet = require('./Wallet/Wallet_Index');
+const wallet = new Wallet();
+console.log(wallet.toString());
 
 
 
+
+
+// const Blockchain = require('./Blockchain/BlockchainIndex')
+
+// let BC = new Blockchain();
+
+// for (let i=0; i<10; i++) {
+//     console.log(BC.addBlock(`nub ${i}`).toString());
+// }
 
 
 
