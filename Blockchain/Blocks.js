@@ -1,4 +1,4 @@
-const SHA256 = require('crypto-js/sha256');
+const ChainUtil = require('../chain-util');
 const { DIFFICULTY, MINE_RATE } = require('../config');
 class Blocks {
     // Constructor & toString: Creates the actual and console version of every block.
@@ -45,7 +45,7 @@ class Blocks {
 
     // currHash: This generates a current has for each new block created. 
     static currHash(timeStamp, prevHash, data, nonce, difficulty) {
-        return SHA256(`${timeStamp}${prevHash}${data}${nonce}${difficulty}`).toString();
+        return ChainUtil.hash(`${timeStamp}${prevHash}${data}${nonce}${difficulty}`).toString();
     }
 
     // blockHash: This function is for the chain itself, it will generate a hash by using the input of the block. 
