@@ -22,14 +22,22 @@ class Transaction {
         return transaction;
     }
 
-static signTransaction(transaction, senderWallet) {
-    transaction.input = {
-        timeStamp: Date.now(),
-        amount: senderWallet.balance,
-        address: senderWallet.publicKey,
-        signature: senderWallet.sign(ChainUtil.hash(transaction.outputs))
+    static signTransaction(transaction, senderWallet) {
+        transaction.input = {
+            timeStamp: Date.now(),
+            amount: senderWallet.balance,
+            address: senderWallet.publicKey,
+            signature: senderWallet.sign(ChainUtil.hash(transaction.outputs))
+        }
     }
-}
+
+    static verifyTransaction(transaction) {
+        return ChainUtil.verifySignature(
+            transaction.input.address,
+            transaction.input.signature,
+            ChainUtil.hash(transaction.outputs));
+
+    }
 
 }
 
