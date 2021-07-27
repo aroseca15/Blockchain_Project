@@ -44,21 +44,21 @@ describe('Transaction', () => {
         })
     });
 
-    describe('updating new transaction output for multiple transactions from same individual', () => {
-        let nextAmount, nextRecipient;
+    // describe('updating new transaction output for multiple transactions from same individual', () => {
+    //     let nextAmount, nextRecipient;
 
-        beforeEach(() => {
-            nextAmount = 20;
-            nextRecipient = 'n3xt-4ddr355';
-            transaction = transaction.update(wallet, nextRecipient, nextAmount)
-        });
+    //     beforeEach(() => {
+    //         nextAmount = 20;
+    //         nextRecipient = 'n3xt-4ddr355';
+    //         transaction = transaction.update(wallet, nextRecipient, nextAmount)
+    //     });
 
-        it(`subtracts the next amount from the sender's output`, () => {
-            expect(transaction.outputs.find(output => output.address === wallet.publicKey).amount).toEqual(wallet.balance - amount - nextAmount);
-        });
+    //     it(`subtracts the next amount from the sender's output`, () => {
+    //         expect(transaction.outputs.find(output => output.address === wallet.publicKey).amount).toEqual(wallet.balance - amount - nextAmount);
+    //     });
 
-        it('outputs for the additional / next recipient', () => {
-            expect(transaction.outputs.find(output => output.address === nextRecipient).amount).toEqual(nextAmount);
-        });
-    });
+    //     it('outputs for the additional / next recipient', () => {
+    //         expect(transaction.outputs.find(output => output.address === nextRecipient).amount).toEqual(nextAmount);
+    //     });
+    // });
 });
