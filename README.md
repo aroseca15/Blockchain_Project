@@ -1,7 +1,7 @@
 # Blockchain-Project 
 
 ## Description:
-This project was for educational and practical purposes. Mainly, to create a Blockchain DDAPS app with crypto currency from scratch. It is a mock of an app coded out in a class by David Joseph Katz. This app is also an example of coding blockchain using OOP. As of now this Project is using the Proof of Work algorithm for block validation. Further transitions for future projects will use the Proof of Participation algorithm to validated new blocks.
+This project was for educational and practical purposes. Mainly, to create a Blockchain DDAPS app with crypto currency from scratch. It is a copy of a Blockchain Backend coded out in a class by David Joseph Katz. This Backend is also an example of coding blockchain using OOP. As of now this Project is using the Proof of Work algorithm for block validation. Further transitions for future projects will use the Proof of Participation algorithm to validated new blocks.
 
 ### Deployment Link: N/A
 
