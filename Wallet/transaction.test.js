@@ -4,6 +4,7 @@ const Wallet = require('./Wallet_Index');
 describe('Transaction', () => {
     let transaction, wallet, recipient, amount;
 
+
     beforeEach(() => {
         wallet = new Wallet();
         amount = 500;
@@ -44,21 +45,15 @@ describe('Transaction', () => {
         })
     });
 
-    // describe('updating new transaction output for multiple transactions from same individual', () => {
-    //     let nextAmount, nextRecipient;
+    describe('Updating a transaction. In the event of multiple transactions for the same individual in a short time', () => {
+        let nextAmount, nextRecipient;
 
-    //     beforeEach(() => {
-    //         nextAmount = 20;
-    //         nextRecipient = 'n3xt-4ddr355';
-    //         transaction = transaction.update(wallet, nextRecipient, nextAmount)
-    //     });
 
-    //     it(`subtracts the next amount from the sender's output`, () => {
-    //         expect(transaction.outputs.find(output => output.address === wallet.publicKey).amount).toEqual(wallet.balance - amount - nextAmount);
-    //     });
+        beforeEach(() => {
+            nextAmount = 20;
+            nextRecipient = 'n3xt-4ddr355';
+            transaction = transaction.update(wallet, nextRecipient, nextAmount);
+        });
 
-    //     it('outputs for the additional / next recipient', () => {
-    //         expect(transaction.outputs.find(output => output.address === nextRecipient).amount).toEqual(nextAmount);
-    //     });
-    // });
+    });
 });
